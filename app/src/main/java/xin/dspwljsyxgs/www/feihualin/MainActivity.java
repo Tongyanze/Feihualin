@@ -54,15 +54,20 @@ public class MainActivity extends AppCompatActivity  {
                 String st = inp.getText().toString();
                 String ans = "";
                 Scanner filescan,utlscan;
+
                 int num = 0;
 
                 try {
-
+                    TextView tv = (TextView) findViewById(R.id.textview1);
                     InputStream context = getClass().getClassLoader().getResourceAsStream("assets/tang300.txt");
                     BufferedReader br = new BufferedReader(new InputStreamReader(context));
                     String ss;
-                    TextView tv = (TextView) findViewById(R.id.textview1);
+
                     String delta = " ";
+                    if (st.equals("") || st == null){
+                        tv.setText("orz，你还什么都没有输入呢！");
+                        return;
+                    }
                     if (func == 2) {
                         while ((ss = br.readLine()) != null) {
 
@@ -83,7 +88,7 @@ public class MainActivity extends AppCompatActivity  {
                     }
                     if (func == 1){
                         boolean find=false;
-                        //Toast.makeText(MainActivity.this,"!!!!  1 !!!!",Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(MainActivity.this,"调试用：功能为1",Toast.LENGTH_SHORT).show();
                         while ((ss = br.readLine()) != null) {
 
                             if (ss.length() > 3) {
@@ -91,7 +96,7 @@ public class MainActivity extends AppCompatActivity  {
                                     find=false;
                                     if (ss.contains(st)) {
                                         find=true;
-                                        delta = " ( " + ss + " ) ";
+                                        delta = " (" + ss + ")";
                                         continue;
                                     }
                                 }
@@ -99,7 +104,6 @@ public class MainActivity extends AppCompatActivity  {
                             if (find == true) {
                                 num++;
                                 ans = ans + num + "." + ss + delta + "\n";
-                                continue;
                             }
 
                             //tv.setText("OMG");
@@ -126,8 +130,9 @@ public class MainActivity extends AppCompatActivity  {
                 }
                 catch (Exception e)
                 {
+                    //Toast.makeText(MainActivity.this,e.toString(),Toast.LENGTH_SHORT).show();
                     TextView tv = (TextView) findViewById(R.id.textview1);
-                    ans = "我的天哪,你还什么都没有打呢!!!";
+                    ans = "我的天哪,程序崩溃了。。。";
                     tv.setText(ans);
                 }
             }
