@@ -115,7 +115,8 @@ public class MainActivity extends AppCompatActivity  {
                         if (l == -1)
                             break;
                         k = l + 1;
-                        style.setSpan(new ForegroundColorSpan(Color.RED),l,r,Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
+
+                        style.setSpan(new ForegroundColorSpan(Color.rgb(19,29,242)),l,r,Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
                     }
                     tv.setMovementMethod(ScrollingMovementMethod.getInstance());
                     tv.setHorizontallyScrolling(true);
