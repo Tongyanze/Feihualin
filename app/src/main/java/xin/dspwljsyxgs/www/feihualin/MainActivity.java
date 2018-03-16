@@ -1,5 +1,6 @@
 package xin.dspwljsyxgs.www.feihualin;
 
+import android.app.Activity;
 import android.preference.EditTextPreference;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,7 +22,7 @@ import android.text.SpannableStringBuilder;
 
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity  {
+public class MainActivity extends Activity {
     static int func=1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +66,7 @@ public class MainActivity extends AppCompatActivity  {
 
                     String delta = " ";
                     if (st.equals("") || st == null){
-                        tv.setText("orz，你还什么都没有输入呢！");
+                        tv.setText("orz，你还什么都没有输入呢！3");
                         return;
                     }
                     if (func == 2) {
@@ -100,11 +101,12 @@ public class MainActivity extends AppCompatActivity  {
                                         continue;
                                     }
                                 }
+                                if (find == true) {
+                                    num++;
+                                    ans = ans + num + "." + ss + delta + "\n";
+                                }
                             }
-                            if (find == true) {
-                                num++;
-                                ans = ans + num + "." + ss + delta + "\n";
-                            }
+
 
                             //tv.setText("OMG");
                         }
