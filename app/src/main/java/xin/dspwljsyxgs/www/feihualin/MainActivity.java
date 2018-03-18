@@ -8,6 +8,7 @@ import android.text.method.ScrollingMovementMethod;
 import android.text.style.BackgroundColorSpan;
 import android.text.style.ForegroundColorSpan;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -22,12 +23,15 @@ import android.text.SpannableStringBuilder;
 
 import android.widget.Toast;
 
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
     static int func=1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
+
+
         Button bt;
         bt = (Button)findViewById(R.id.button1);
         RadioGroup rgp=(RadioGroup)findViewById(R.id.rgp1);
@@ -66,24 +70,25 @@ public class MainActivity extends Activity {
 
                     String delta = " ";
                     if (st.equals("") || st == null){
-                        tv.setText("orz，你还什么都没有输入呢！3");
+                        tv.setText("orz，你还什么都没有输入呢！");
                         return;
                     }
                     if (func == 2) {
                         while ((ss = br.readLine()) != null) {
 
-                            if (ss.length() > 3)
+                            if (ss.length() > 3) {
                                 if ((ss.charAt(0) >= '0') && (ss.charAt(0) <= '9')) {
                                     delta = " (" + ss + ")";
                                     continue;
                                 }
-                            if (ss.contains(st)) {
-                                if ((ss.charAt(0) >= '0') && (ss.charAt(0) <= '9'))
-                                    continue;
-                                num++;
-                                ans = ans + num + "." + ss + delta + "\n";
-                                //tv.setText("OMG");
+                                if (ss.contains(st)) {
+                                    if ((ss.charAt(0) >= '0') && (ss.charAt(0) <= '9'))
+                                        continue;
+                                    num++;
+                                    ans = ans + num + "." + ss + delta + "\n";
+                                    //tv.setText("OMG");
 
+                                }
                             }
                         }
                     }
